@@ -24,8 +24,6 @@ services:
       # Storage settings
       FILESYSTEM_DISK: local
       LOCAL_FILESYSTEM_VISIBILITY: public
-    env_file: 
-      - ./api/.env
     depends_on:
       db:
         condition: service_healthy
@@ -42,8 +40,6 @@ services:
       <<: *api-env
       APP_ENV: production
       IS_API_WORKER: "true"
-    env_file: 
-      - ./api/.env
 
   api-scheduler:
     <<: *api-environment
@@ -59,8 +55,6 @@ services:
       CONTAINER_ROLE: scheduler
       PHP_MEMORY_LIMIT: 512M
       PHP_MAX_EXECUTION_TIME: 60
-    env_file: 
-      - ./api/.env
 
   ui:
     image: jhumanj/opnform-client:latest
@@ -68,8 +62,6 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile.client
-    env_file: 
-      - ./client/.env
 
   redis:
     image: redis:7
