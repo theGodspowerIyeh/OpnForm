@@ -96,7 +96,7 @@ services:
     volumes:
       - ./docker/nginx.conf:/etc/nginx/templates/default.conf.template
     ports:
-      - 80:80
+      - 78:80
     depends_on:
       api:
         condition: service_started
